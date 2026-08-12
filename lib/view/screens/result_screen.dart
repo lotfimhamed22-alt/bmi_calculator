@@ -22,7 +22,7 @@ class ResultScreen extends StatelessWidget {
       appBar: AppBar(scrolledUnderElevation: 0, backgroundColor: Colors.white),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
+        child: ListView(
           children: [
             SizedBox(height: 10),
             Container(
