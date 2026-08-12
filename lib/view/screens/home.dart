@@ -1,7 +1,9 @@
 import 'package:bmi_calculator/constants/app_color.dart';
 import 'package:bmi_calculator/view/screens/calculate_screen.dart';
 import 'package:bmi_calculator/view/widgets/custom_text.dart';
+import 'package:bmi_calculator/view_model/bmi_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -12,16 +14,16 @@ class MyHomePage extends StatelessWidget {
       body: Stack(
         children: [
           Positioned(
-            top: 518,
+            top: 418,
             bottom: 0,
             left: 0,
             right: 0,
             child: Container(
               width: double.infinity,
-              height: 417.2,
+              height: 430,
               decoration: BoxDecoration(
                 color: AppColors().primary,
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
               child: Padding(
                 padding: const EdgeInsets.only(left: 30, right: 40, top: 50),
@@ -36,7 +38,7 @@ class MyHomePage extends StatelessWidget {
                       color: Colors.white,
                     ),
 
-                    SizedBox(height: 35),
+                    SizedBox(height: 15),
                     CustomText(
                       text:
                           "It takes just 30 seconds – and your health is \nworth it!",
@@ -54,9 +56,12 @@ class MyHomePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          (MaterialPageRoute(
-                            builder: (context) => CalculateScreen(),
-                          )),
+                          MaterialPageRoute(
+                            builder: (context) => BlocProvider(
+                              create: (context) => BmiCubit(),
+                              child: CalculateScreen(),
+                            ),
+                          ),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -66,12 +71,17 @@ class MyHomePage extends StatelessWidget {
                         ),
                         padding: const EdgeInsets.symmetric(
                           horizontal: 140,
-                          vertical: 13,
+                          vertical: 10,
                         ),
                       ),
                       child: Text(
                         "Get Start",
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ],
@@ -81,7 +91,7 @@ class MyHomePage extends StatelessWidget {
           ),
           Positioned(
             left: 32,
-            top: 182,
+            top: 82,
             child: Image.asset(
               "assets/images/img_first_screen.png",
               width: 370,

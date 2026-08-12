@@ -1,14 +1,14 @@
 class BmiModel {
   // data
   final String status;
-  final dynamic error;
+  final String? error;
   final BmiData data;
   // constructor
   BmiModel({required this.status, required this.error, required this.data});
   // factory constructor
   factory BmiModel.fromJson(Map<String, dynamic> json) => BmiModel(
     status: json["status"],
-    error: json["error"],
+    error: json["error"]?.toString(),
     data: BmiData.fromJson(json["data"]),
   );
 }
@@ -18,9 +18,9 @@ class BmiData {
   final String height;
   final String weight;
   final double bmi;
-  final String risk;
-  final String summary;
-  final String recommendation;
+  final String? risk;
+  final String? summary;
+  final String? recommendation;
   // constructor
   BmiData({
     required this.height,
@@ -35,8 +35,8 @@ class BmiData {
     height: json["height"],
     weight: json["weight"],
     bmi: json["bmi"],
-    risk: json["risk"],
-    summary: json["summary"],
-    recommendation: json["recommendation"],
+    risk: json["risk"]?.toString(),
+    summary: json["summary"]?.toString(),
+    recommendation: json["recommendation"]?.toString(),
   );
 }

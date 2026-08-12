@@ -31,13 +31,18 @@ class _CalculateScreenState extends State<CalculateScreen> {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        appBar: AppBar(),
+        backgroundColor: Colors.white,
+
+        appBar: AppBar(
+          scrolledUnderElevation: 0,
+          backgroundColor: Colors.white,
+        ),
         body: Center(
           child: Form(
             key: _formKey,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Column(
+              child: ListView(
                 children: [
                   // text
                   CustomText(
@@ -48,7 +53,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                   ),
                   //SizedBox(height: 5),
                   CustomRow(text: "Name"),
-                  SizedBox(height: 12),
+                  SizedBox(height: 8),
                   CustomTextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -63,9 +68,9 @@ class _CalculateScreenState extends State<CalculateScreen> {
                     controller: controllerName,
                     textAlign: TextAlign.start,
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   CustomRow(text: "Birth Date"),
-                  SizedBox(height: 12),
+                  SizedBox(height: 8),
                   CustomTextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -88,9 +93,9 @@ class _CalculateScreenState extends State<CalculateScreen> {
                       }
                     },
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   CustomRow(text: "Choose Gender"),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -157,7 +162,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                       // Column(children: []),
                     ],
                   ),
-                  SizedBox(height: 22),
+                  SizedBox(height: 12),
                   CustomRow(text: "Your Height(cm)"),
                   SizedBox(height: 12),
                   CustomTextFormField(

@@ -17,7 +17,9 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.white,
+
+      appBar: AppBar(scrolledUnderElevation: 0, backgroundColor: Colors.white),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
@@ -49,7 +51,7 @@ class ResultScreen extends StatelessWidget {
                                   color: Colors.white,
                                 ),
                                 CustomText(
-                                  text: "A 23 years old male.",
+                                  text: "A 19 years old male.",
                                   size: 15,
                                   fontWeight: FontWeight.normal,
                                   color: Colors.white,
@@ -132,7 +134,7 @@ class ResultScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 33),
+            SizedBox(height: 23),
             Container(
               decoration: BoxDecoration(
                 color: AppColors().cardColor,
@@ -154,15 +156,19 @@ class ResultScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 5),
                     CustomText(
-                      text: bmiModel.data.summary,
+                      text:
+                          bmiModel.data.summary ??
+                          "This weight is normal and you are healthy.",
                       size: 15,
                       fontWeight: FontWeight.normal,
                       color: Colors.white,
                     ),
                     SizedBox(height: 5),
                     CustomText(
-                      text: bmiModel.data.recommendation,
-                      size: 15,
+                      text:
+                          bmiModel.data.recommendation ??
+                          "A BMI between 18.5 and 24.9 falls within the 'normal' weight range according\nto the World Health Organization. This range is associated with the lowest\nhealth risk for conditions such as heart disease, diabetes, and certain\ncancers. However, it's important to note that BMI is not a perfect measure\nas it does not account for muscle mass, bone density, overall body\ncomposition, and racial and sex differences. Therefore, while it's a useful\n starting point, it should not be the only measure of one's health.",
+                      size: 12,
                       fontWeight: FontWeight.normal,
                       color: Colors.white,
                     ),
@@ -170,7 +176,7 @@ class ResultScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 60),
+            SizedBox(height: 23),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
